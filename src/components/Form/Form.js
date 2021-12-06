@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import s from './Form.module.css';
 import Statistic from './Statistic';
 import Feedback from './Feedback';
 
-class Form extends React.Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+class Form extends Component {
   goodFeedback = () => {
     this.setState(prevState => ({
       good: prevState.good + 1,
@@ -24,6 +19,7 @@ class Form extends React.Component {
       bad: prevState.bad + 1,
     }));
   };
+
   countTotalFeedback = () => {
     this.satState(prevState => ({
       total: prevState.bad + prevState.neutral + prevState.good,
