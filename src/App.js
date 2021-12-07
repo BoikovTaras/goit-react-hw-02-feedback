@@ -8,6 +8,31 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
+
+  goodFeedback = () => {
+    this.setState(prevState => ({
+      good: prevState.good + 1,
+    }));
+  };
+  neutralFeedback = () => {
+    this.setState(prevState => ({
+      neutral: prevState.neutral + 1,
+    }));
+  };
+  badFeedback = () => {
+    this.setState(prevState => ({
+      bad: prevState.bad + 1,
+    }));
+  };
+
+  Feedback = event => {
+    console.log(event.target.textContent);
+    // this.setState(prevState => ({
+
+    //   // [this.currentTarget.name]: prevState.[this.currentTarget.name] + 1,
+    // }));
+  };
+
   render() {
     const { good } = this.state;
     const { neutral } = this.state;
@@ -15,7 +40,12 @@ class App extends Component {
 
     return (
       <>
-        <Form good={good} neutral={neutral} bad={bad} />
+        <Form
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          Feedback={this.Feedback}
+        />
       </>
     );
   }

@@ -6,17 +6,17 @@ const Feedback = ({ good, neutral, bad }) => (
     <h2 className="">Please leave feedback</h2>
     <ul className="">
       <li className="">
-        <button className={s.good} onClick={good}>
+        <button className={s.good} name="good" onClick={good}>
           Good
         </button>
       </li>
       <li className="">
-        <button className={s.neutral} onClick={neutral}>
+        <button className={s.neutral} name="neutral" onClick={neutral}>
           Neutral
         </button>
       </li>
       <li className="">
-        <button className={s.bad} onClick={bad}>
+        <button className={s.bad} name="bad" onClick={bad}>
           Bad
         </button>
       </li>

@@ -4,33 +4,11 @@ import Statistic from './Statistic';
 import Feedback from './Feedback';
 
 class Form extends Component {
-  goodFeedback = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-  neutralFeedback = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-  badFeedback = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
-  };
-
-  countTotalFeedback = () => {
-    this.satState(prevState => ({
-      total: prevState.bad + prevState.neutral + prevState.good,
-    }));
-  };
-
   render() {
     return (
       <div className={s.form}>
         <Feedback
-          good={this.goodFeedback}
+          good={Feedback}
           neutral={this.neutralFeedback}
           bad={this.badFeedback}
         />
