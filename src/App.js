@@ -1,5 +1,7 @@
-import Form from './components/Form/Form';
-
+import s from './components/Feedback/Feedback.module.css';
+import Statistic from './components/Statistic/Statistic';
+import Feedback from './components/Feedback/Feedback';
+import Section from './components/Section/Section';
 import React, { Component } from 'react';
 
 class App extends Component {
@@ -9,28 +11,27 @@ class App extends Component {
     bad: 0,
   };
 
-  goodFeedback = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-  neutralFeedback = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-  badFeedback = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
-  };
-
   Feedback = event => {
-    console.log(event.target.textContent);
-    // this.setState(prevState => ({
+    const btn = event.target.name;
 
-    //   // [this.currentTarget.name]: prevState.[this.currentTarget.name] + 1,
-    // }));
+    this.setState(prevState => ({
+      [btn]: (prevState[btn] += 1),
+    }));
+  };
+
+  GetTotafFeedback = () => {
+    const totalFeedback = Object.keys(this.state).reduce(
+      (acc, value) => acc + this.state[value],
+      0,
+    );
+    return totalFeedback;
+  };
+
+  PositiveFeedbackPercentage = () => {
+    const percent = Math.round(
+      (this.state.good * 100) / this.GetTotafFeedback(),
+    );
+    return percent;
   };
 
   render() {
@@ -39,14 +40,18 @@ class App extends Component {
     const { bad } = this.state;
 
     return (
-      <>
-        <Form
+      <div className={s.container}>
+        <Section title="Please leave feedback" />
+        <Feedback state={this.state} feedback={this.Feedback} />
+        <Section title="Statistics" />
+        <Statistic
           good={good}
           neutral={neutral}
           bad={bad}
-          Feedback={this.Feedback}
+          total={this.GetTotafFeedback}
+          percent={this.PositiveFeedbackPercentage}
         />
-      </>
+      </div>
     );
   }
 }

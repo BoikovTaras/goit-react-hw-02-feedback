@@ -1,0 +1,10 @@
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.14;
+  color: rgb(193, 255, 252);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
