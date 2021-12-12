@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Feedback.module.css';
+import PropTypes from 'prop-types';
 
 const Feedback = ({ state, feedback }) => (
   <div className="">
@@ -22,5 +23,11 @@ const Feedback = ({ state, feedback }) => (
     </ul>
   </div>
 );
+
+Feedback.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+};
 
 export default Feedback;
