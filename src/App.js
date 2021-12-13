@@ -1,9 +1,11 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import s from './components/Feedback/Feedback.module.css';
+
 import Statistic from './components/Statistic/Statistic';
 import Feedback from './components/Feedback/Feedback';
 import Section from './components/Section/Section';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 class App extends Component {
   state = {
@@ -12,15 +14,13 @@ class App extends Component {
     bad: 0,
   };
 
-  Feedback = event => {
-    const btn = event.target.name;
-
+  incrementHandler = feedback => {
     this.setState(prevState => ({
-      [btn]: (prevState[btn] += 1),
+      [feedback]: prevState[feedback] + 1,
     }));
   };
 
-  GetTotafFeedback = () => {
+  getTotafFeedback = () => {
     const totalFeedback = Object.keys(this.state).reduce(
       (acc, value) => acc + this.state[value],
       0,
@@ -28,9 +28,9 @@ class App extends Component {
     return totalFeedback;
   };
 
-  PositiveFeedbackPercentage = () => {
+  positiveFeedbackPercentage = () => {
     const percent = Math.round(
-      (this.state.good * 100) / this.GetTotafFeedback(),
+      (this.state.good * 100) / this.getTotafFeedback(),
     );
     return percent;
   };
@@ -43,14 +43,17 @@ class App extends Component {
     return (
       <div className={s.container}>
         <Section title="Please leave feedback" />
-        <Feedback state={this.state} feedback={this.Feedback} />
+        <Feedback
+          option={['good', 'neutral', 'bad']}
+          onIncrement={this.incrementHandler}
+        />
         <Section title="Statistics" />
         <Statistic
           good={good}
           neutral={neutral}
           bad={bad}
-          total={this.GetTotafFeedback}
-          percent={this.PositiveFeedbackPercentage}
+          total={this.getTotafFeedback}
+          percent={this.positiveFeedbackPercentage}
         />
       </div>
     );

@@ -8,15 +8,10 @@
   margin: 0 50px;
 }
 
-.good:hover {
-  background-color: rgb(57, 170, 22);
+.button:hover {
+  background-color: #067ac7;
 }
-.neutral:hover {
-  background-color: rgb(146, 138, 25);
-}
-.bad:hover {
-  background-color: rgb(214, 40, 40);
-}
+
 button {
   border-color: #3498db;
   color: #fff;
@@ -25,7 +20,7 @@ button {
   box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
   -webkit-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
-  margin-top: 10px;
+  margin: 10px;
 }
 button:hover {
   box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
